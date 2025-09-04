@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
+
+
+
+@keyframes spin {
+    0% {
+        // opacity: 0;
+        transform: rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(360deg);
+        // opacity: 0;        
+    }
+}
+
+:root {
+
+    --font-title: Arial, sans-serif;
+    --font-content: "Montserrat", Arial, sans-serif;
+
+    --rgb-primary: 33,33,33;
+    --rgb-primary-light: 72,72,72;
+    --rgb-primary-dark: 0,0,0;
+    --rgb-secondary: 255,234,0;
+    --rgb-secondary-dark: 199,184,0;
+    --rgb-light: 245,245,245;
+    --rgb-dark: 33,33,33;
+    --rgb-background: 224,224,224;
+
+    --color-primary: rgb(var(--rgb-primary));
+    --color-primary-light: rgb(var(--rgb-primary-light));  
+    --color-primary-dark: rgb(var(--rgb-primary-dark)); 
+    --color-secondary: rgb(var(--rgb-secondary));
+    --color-secondary-dark: rgb(var(--rgb-secondary-dark));
+    --color-light: rgb(var(--rgb-light));
+    --color-dark: rgb(var(--rgb-dark));
+    --color-background: rgb(var(--rgb-background));
+
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-content);
+}
+
+.raised {
+    box-shadow: 0 3px 6px -3px var(--color-dark);
+}
+
+.hidden {
+    display: none;
+}
+
+.spinner {
+    animation: spin .5s linear infinite both;
+    border-top: .5rem solid var(--color-primary);
+    border-right: .5rem solid var(--color-primary);
+    border-bottom: .5rem solid transparent;
+    border-left: .5rem solid transparent;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 10rem;
+    margin: 0 auto;
+}
+
+.btn {
+    background-color: var(--color-secondary);
+    color: var(--color-dark);
+    border: none;
+    padding: .5em 1em;
+    cursor: pointer;
+    border-radius: .25em;
+}
+
+.page {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-background);
+    padding-top: 4rem;
+
+    &:last-of-type {
+        display: block;
+    }
+}
+
+header {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    color: var(--color-light);
+    background-color: var(--color-primary);
+    width: 100%;
+    padding: .5rem 2rem;
+    
+    >.logo {
+        height: 2rem;
+
+        img {
+            height: 100%;
+        }
+    }
+    
+    nav {
+        font-weight: 600;
+        padding: 0 2rem;
+
+        i.fas {
+            margin-right: 1em;
+        }
+    }    
+
+}
+
+.login.page {
+
+    
+    .main-section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        login-form,
+        select-menu,
+        xlsx-parser {
+            margin: .5rem;
+        }
+    }
+
+
+}
+
+.order.page {
+    
+    .main-section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        > .header,
+        > .search {
+            max-width: 50rem;
+        }
+
+        > .header {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            background-color: var(--color-light);
+            border-radius: .5em;    
+            
+            order-summary {
+                margin: .5rem;
+            }
+
+        }
+
+
+        > .search {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+            align-items: center;
+
+            .search-bar {
+                display: block;
+                width: 25rem;
+                border-radius: 1em;
+                padding: .5em 2em;
+                border: none;
+            }
+
+            .selected {
+                padding: 0 1rem;
+
+                .checkbox {
+                    transform: scale(1.5);
+                }
+            }
+
+
+        }
+    
+        > .product-table {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+    
+            product-row {
+                margin-bottom: .25rem;
+
+            }
+        }
+    }
+
+}
+
+.tracking.page {
+
+    .main-section {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .tracking-table {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+    
+            tracking-row {
+                margin-bottom: .25rem;
+    
+            }
+        }
+
+        .spinner-wrapper {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+    }    
+}
+
+.shopify.page {
+
+    .main-section {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+       
+        > .header {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            background-color: var(--color-light);
+            border-radius: .5em;    
+
+        }
+
+    }    
+}
+
+.shipping.page {
+
+    .main-section {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        > * {
+            margin: .5rem;
+        }
+
+    } 
+}
+
+@media screen and (min-width: 768px) and (orientation: landscape) {
+    .order.page {
+        .main-section{
+            > .header {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        }
+    }
+}
+

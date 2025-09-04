@@ -1,0 +1,71 @@
+<template id="account-card">
+    <style>
+        :host {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--color-primary);
+            padding: 0 2em;
+            border-radius: 1em;
+            color: var(--color-light);
+            box-shadow: 0 6px 6px -3px var(--color-primary-dark);
+            width: 20rem;
+            overflow: hidden;
+            font-family: var(--font-content);
+        }
+
+        .title {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            color: var(--color-secondary);
+            margin: 1em auto;
+            letter-spacing: .1em;
+        }
+
+        input,
+        select {
+            margin: .25em 0;
+            font-size: 1.1em;
+            border-radius: .25em;
+            border: none;
+        }
+
+        input[type="number"] {
+            width: 2em;
+        }
+
+        i.fas {
+            margin: 0 .25em;
+        }
+
+        button {
+            background-color: var(--color-secondary);
+            color: var(--color-dark);
+            font-family:  var(--font-title);
+            border: none;
+            margin: 1em auto;
+            padding: 0 1em;
+            font-size: 1.3rem;
+            cursor: pointer;
+            border-radius: .25em;
+        }
+    </style>
+    <h3 class="title">ACCOUNT</h3>
+    <label for="account-holder">Nombre</label>
+    <div><i class="fas fa-at"></i><input type="text" name="account-holder" id="account-holder" required></div>
+    <label for="bank">Banco</label>
+    <div><i class="fas fa-at"></i><input type="text" name="bank" id="bank" required></div>
+    <label for="card">Tarjeta</label>
+    <div><i class="fas fa-at"></i><input type="text" name="card" id="card" required></div>
+    <label for="clabe">CLABE</label>
+    <div><i class="fas fa-at"></i><input type="text" name="clabe" id="clabe" required></div>
+    <label for="account-number">Cuenta</label>
+    <div><i class="fas fa-key"></i> <input type="text" name="account-number" id="account-number" required></div>
+    <div>
+        <label for="start-date">Start</label>
+        <input type="number" name="start-date" id="start-date" required>
+        <label for="end-date">End</label>
+        <input type="number" name="end-date" id="end-date" required>
+    </div>
+    <button id="update">Update</button>
+    <button id="delete">Delete</button>
+</template>

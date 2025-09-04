@@ -1,0 +1,112 @@
+<template id="order-summary">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <style>
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        :host {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--color-primary);
+            padding: 0 1em;
+            border-radius: 1em;
+            color: var(--color-light);
+            box-shadow: 0 6px 6px -3px var(--color-primary-dark);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .color {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            width: 1rem;
+            height: 1rem; 
+            background-color: var(--color);
+            border-radius: 1rem;
+        }
+
+        .title {
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            color: var(--color-secondary);
+        }
+
+        .quantity,
+        .total {
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: var(--color-secondary);
+            color: var(--color-dark);
+            font-family: var(--font-title);
+            border: none;
+            margin: 1em auto;
+            padding: 0 1em;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: .25em;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .fail {
+            color: red;
+        }
+
+        .connecting {
+            color: gray;
+        }
+
+        .spinner-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .spinner {
+            animation: spin .5s linear infinite both;
+            border-top: .5rem solid var(--color-light);
+            border-right: .5rem solid var(--color-light);
+            border-bottom: .5rem solid transparent;
+            border-left: .5rem solid transparent;
+            width: 5rem;
+            height: 5rem;
+            border-radius: 10rem;
+        }
+
+    </style>
+    <div class="color"></div>
+    <h3 class="title">WEREHOUSE NAME</h3>
+    <span class="quantity">PRODUCTS</span>
+    <span class="total">MXN</span>
+    <button class="btn" id="send">
+        <span>ENVIAR PEDIDO</span>
+        <i class="fas fa-paper-plane"></i>
+    </button>
+    <span class="status success hidden"><i class="fas fa-check-circle"></i> Connection Succesful</span>
+    <span class="status fail hidden"><i class="fas fa-exclamation-triangle"></i> Connection Failed</span>
+    <span class="status connecting"><i class="fas fa-rss-square"></i> Connecting...</span>
+    <div class="spinner-wrapper">
+        <div class="spinner"></div>
+    </div>
+</template>

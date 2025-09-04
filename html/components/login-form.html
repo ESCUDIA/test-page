@@ -1,0 +1,54 @@
+<template id="login-form">
+    <style>
+        :host {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--color-primary);
+            padding: 0 2em;
+            border-radius: 1em;
+            color: var(--color-light);
+            box-shadow: 0 6px 6px -3px var(--color-primary-dark);
+            width: 20rem;
+            overflow: hidden;
+            font-family: var(--font-content);
+        }
+
+        .title {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            color: var(--color-secondary);
+            margin: 1em auto;
+            letter-spacing: .1em;
+        }
+
+        input,
+        select {
+            margin: .25em 0;
+            font-size: 1.1em;
+            border-radius: .25em;
+            border: none;
+        }
+
+        i.fas {
+            margin: 0 .25em;
+        }
+
+        button {
+            background-color: var(--color-secondary);
+            color: var(--color-dark);
+            font-family:  var(--font-title);
+            border: none;
+            margin: 1em auto;
+            padding: 0 1em;
+            font-size: 1.3rem;
+            cursor: pointer;
+            border-radius: .25em;
+        }
+    </style>
+    <h3 class="title">LOGIN</h3>
+    <label for="email">Email</label>
+    <div><i class="fas fa-at"></i><input type="email" name="email" id="email" required></div>
+    <label for="password">Password</label>
+    <div><i class="fas fa-key"></i> <input type="password" name="password" id="password" required></div>
+    <button id="submit">LOGIN</button>
+</template>

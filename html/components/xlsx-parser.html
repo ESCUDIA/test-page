@@ -1,0 +1,55 @@
+<template id="xlsx-parser">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <style>
+        :host {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--color-primary);
+            padding: 1em 2em;
+            border-radius: 1em;
+            color: var(--color-light);
+            box-shadow: 0 6px 6px -3px var(--color-primary-dark);
+            width: 20rem;
+            overflow: hidden;
+            font-family: var(--font-content);
+        }
+
+        .title {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            color: var(--color-secondary);
+            margin: .5em auto;
+            font-weight: 600;
+        }
+
+        input,
+        select {
+            margin: .5em 0;
+            font-size: 1.1em;
+            border-radius: .25em;
+            border: none;
+        }
+
+        button i.fas {
+            margin-right: .5em;
+        }
+
+        button {
+            background-color: var(--color-secondary);
+            color: var(--color-dark);
+            font-family:  var(--font-title);
+            border: none;
+            margin: .5em auto;
+            padding: .25em 1em;
+            font-size: 1.3rem;
+            cursor: pointer;
+            border-radius: .25em;
+        }
+    </style>
+    <span class="title">PRODUCTS</span>
+    <select class="warehouse">
+    </select>
+    <input class="file" type="file">
+    <button class="btn parse"><i class="fas fa-upload"></i>LOAD</button>
+</template>

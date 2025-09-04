@@ -1,0 +1,389 @@
+<template id="shipping-form">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <style>
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        :host {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            background-color: var(--color-primary);
+            background-image: linear-gradient(45deg, var(--color-primary), var(--color-primary-dark));
+            padding: 2rem;
+            border-radius: .5rem;
+            color: var(--color-light);
+            /* overflow: hidden; */
+            width: 100%;
+            font-family: var(--font-content);
+            /* justify-content: space-evenly; */
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .spinner-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .spinner {
+            animation: spin .25s linear infinite both;
+            border-top: .5rem solid var(--color-light);
+            border-right: .5rem solid var(--color-light);
+            border-bottom: .5rem solid transparent;
+            border-left: .5rem solid transparent;
+            width: 5rem;
+            height: 5rem;
+            border-radius: 10rem;
+        }
+
+
+        .header {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .controls {
+            display: flex;
+        }
+
+        .controls i {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 1rem;
+            cursor: pointer;
+            margin-right: .5rem;
+        }
+
+        .title {
+            /* position: relative; */
+            font-family: var(--font-headers);
+            font-size: 1.2rem;
+            color: var(--color-secondary);
+            /* margin: .5rem auto; */
+            /* width: 100%; */
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* .new,
+        .admin,
+        .advanced,
+        .advanced.new {
+            display: none;
+        } */
+
+        .info {
+            width: 100%;
+            margin-top: .5rem;
+            color: var(--color-secondary);
+        }
+
+        .field {
+            position: relative;
+            width: 100%;
+            padding: 1.1rem 1rem 0 1rem;
+            margin-top: .5rem;
+        }
+
+        .half {
+            width: 50%;
+        }
+
+        input,
+        select {
+            padding: .25rem .5rem;
+            border-radius: .25rem;
+            border: none;
+            width: 100%;
+        }
+
+        input:read-only {
+            color: var(--color-dark);
+            background-color: var(--color-primary-light);
+        }
+
+        label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: .8rem;
+        }
+
+        .field i.fas {
+            position: absolute;
+            bottom: .25rem;
+            right: 1.2rem;
+            color: var(--color-dark);
+        }
+
+        button {
+            background-color: var(--color-secondary);
+            color: var(--color-dark);
+            font-family: var(--font-headers);
+            border: none;
+            margin: 2rem auto 1em auto;
+            padding: .15em 1em;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: .25em;
+        }
+
+        button#deactivate {
+            background-color: red;
+
+        }
+
+        .create,
+        .passview {
+            cursor: pointer;
+            margin: 1rem auto 0 auto;
+            font-size: .8em;
+            width: 100%;
+            text-align: center;
+        }
+
+
+        /* :host([admin]) .admin,
+        :host([advanced]) .advanced,
+        :host([new]) .new,
+        :host([advanced][new]) .advanced.new {
+            display: initial;
+        } */
+
+        :host(:not([admin])) .admin,
+        :host(:not([advanced])) .advanced,
+        :host(:not([new])) .new,
+        :host([closed]) .closed--hidden {
+            display: none;
+        }
+
+        /* :host([closed]) .closed--hidden,
+        :host([closed]) .advanced.closed--hidden,
+        :host([closed]) .new.closed--hidden {
+            display: none;
+        }          */
+
+        .open-btn::before {
+            content: '\f077';
+        }
+
+        :host([closed]) .open-btn::before {
+            content: '\f078';
+        }
+
+        :host([connection="connecting"]) .spinner-wrapper {
+            display: inline-block;
+        }
+
+        @media screen and (min-width: 768px) and (orientation: landscape) {
+            :host {
+                width: 40rem;
+            }
+
+            .half {
+                width: 50%;
+            }
+        }
+    </style>
+    <div class="header">
+        <span class="title"></span>
+
+        <div class="controls">
+            <!-- <i class="fas fa-save save-btn disabled--hidden admin" title="save"></i> -->
+            <!-- <i class="fas fa-image voucher-btn disabled--hidden admin" title="voucher"></i>
+            <i class="fas fa-envelope notification-btn disabled--hidden admin" title="voucher"></i> -->
+            <!-- <i class="fas fa-ban cancel-btn disabled--hidden admin" title="cancel"></i> -->
+            <!-- <i class="fas fa-user user-btn disabled--hidden admin" title="user"></i> -->
+            <!-- <i class="fas fa-plus-circle add-btn disabled--hidden admin" title="add"></i> -->
+            <!-- <i class="fas fa-chevron-down list-btn" title="more"></i> -->
+            <i class="fas open-btn" title="more"></i>
+        </div>
+    </div>
+
+
+    <span class="info closed--hidden">Datos personales</span>
+
+    <div class="field half">
+        <label for="first-name">Nombre</label>
+        <input type="text" name="first-name" id="first-name" required autocomplete="off">
+    </div>
+
+    <div class="field half">
+        <label for="last-name">Apellido</label>
+        <input type="text" name="last-name" id="last-name" required autocomplete="off">
+    </div>
+
+    <div class="field half closed--hidden advanced">
+        <label for="birthday">Fecha de Nacimiento</label>
+        <input type="date" name="birthday" id="birthday" autocomplete="off">
+    </div>
+
+    <div class="field half">
+        <label for="business">Nombre del negocio (Opcional)</label>
+        <input type="text" name="business" id="business" autocomplete="off">
+    </div>
+
+    <span class="info closed--hidden advanced">Datos profesionales</span>
+
+    <div class="field closed--hidden half advanced">
+        <label for="tax-id">RFC</label>
+        <input type="text" name="tax-id" id="tax-id" required autocomplete="off">
+    </div>
+
+    <div class="field closed--hidden half advanced">
+        <label for="license-id">Cédula Profesional</label>
+        <input type="text" name="license-id" id="license-id" required autocomplete="off">
+    </div>
+
+    <div class="field closed--hidden half advanced">
+        <label for="speciality">Especialidad</label>
+        <input type="text" name="speciality" id="speciality" autocomplete="off">
+    </div>
+
+    <div class="field closed--hidden half advanced">
+        <label for="profession">Profesión</label>
+        <input type="text" name="profession" id="profession" autocomplete="off">
+    </div>
+
+    <div class="field closed--hidden half advanced">
+        <label for="agent">Agente</label>
+        <select name="agent" id="agent" class="agent" required>
+            <option value="">---</option>
+        </select>
+    </div>
+
+    <div class="field closed--hidden half new advanced">
+        <label for="role">Permisos</label>
+        <select name="role" id="role" class="role" required>
+            <option value="">---</option>
+            <option value="User">USER</option>
+            <option value="Agent">AGENT</option>
+            <option value="Admin">ADMIN</option>
+        </select>
+    </div>
+
+    <span class="info closed--hidden">Dirección</span>
+
+    <div class="field closed--hidden">
+        <label for="street">Calle</label>
+        <input type="text" name="street" id="street" required autocomplete="off">
+    </div>
+
+    <div class="field half closed--hidden">
+        <label for="street-number">No. Ext</label>
+        <input type="text" name="street-number" id="street-number" required autocomplete="off">
+    </div>
+
+    <div class="field half closed--hidden">
+        <label for="street-2-number">No. Int (Opcional)</label>
+        <input type="text" name="street-2-number" id="street-2-number" autocomplete="off">
+    </div>
+
+    <div class="field half closed--hidden">
+        <label for="zip">Codigo Postal</label>
+        <input type="text" name="zip" id="zip" pattern=".{5}" required autocomplete="off">
+    </div>
+
+    <!-- <div class="field half">
+        <label for="col">Colonia</label>
+        <input type="text" name="col" id="col" required autocomplete="off">
+    </div> -->
+
+    <div class="field half closed--hidden">
+        <label for="col">Colonia</label>
+        <select name="col" id="col" class="col" required>
+            <option value="">---</option>
+        </select>
+    </div>
+
+    <div class="field half closed--hidden">
+        <label for="city">Ciudad</label>
+        <input type="text" name="city" id="city" required autocomplete="off" readonly>
+    </div>
+
+    <div class="field half closed--hidden">
+        <label for="municipality">Municipio</label>
+        <input type="text" name="municipality" id="municipality" required autocomplete="off" readonly>
+    </div>
+
+    <div class="field half closed--hidden">
+        <label for="state">Estado</label>
+        <input type="text" name="state" id="state" required autocomplete="off" readonly>
+    </div>
+
+    <div class="field half closed--hidden">
+        <label for="country">Pais</label>
+        <input type="text" name="country" id="country" required autocomplete="off" value="MEXICO" readonly>
+    </div>
+
+    <span class="info closed--hidden">Datos de contacto</span>
+
+    <div class="field closed--hidden">
+        <label for="phone">Celular</label>
+        <input type="tel" name="phone" id="phone" pattern=".{10,}" required autocomplete="off">
+    </div>
+
+    <div class="field closed--hidden advanced">
+        <label for="phone2">Télefono (Opcional)</label>
+        <input type="tel" name="phone2" id="phone2" pattern=".{10,}" autocomplete="off">
+    </div>
+
+    <div class="field closed--hidden">
+        <label for="email">Email (Opcional)</label>
+        <input type="text" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required
+            autocomplete="off" disabled>
+    </div>
+
+    <!-- <div class="field new closed--hidden">
+        <label for="password">Contraseña (8 caracteres minimo)</label>
+        <i class="fas fa-key"></i> <input type="password" name="password" id="password" pattern=".{8,}" required
+            autocomplete="off" disabled>
+    </div>
+
+    <div class="field new closed--hidden">
+        <label for="password2">Confirma contraseña</label>
+        <input type="password" name="password2" id="password2" required autocomplete="off" disabled>
+    </div> -->
+
+    <!-- <span class="passview new closed--hidden"><i class="fas fa-eye-slash"></i>Ver Contraseña</span> -->
+
+
+    <div class="buttons">
+        <!-- <button id="submit">GUARDAR</button>
+        <button id="authorize" class="admin">AUTORIZAR</button>
+        <button id="deactivate" class="admin">DESACTIVAR</button> -->
+    </div>
+
+    <div class="spinner-wrapper">
+        <div class="spinner"></div>
+    </div>
+
+</template>

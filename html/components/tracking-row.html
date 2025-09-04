@@ -1,0 +1,73 @@
+<template id="tracking-row">
+    <style>
+        :host {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 95%;
+            max-width: 95%;
+            padding: .5rem 1rem;
+            background-color: var(--color-light);
+            border-radius: .5rem;
+            overflow: hidden;
+        }
+
+        .date {
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+        }
+
+        .number {
+            font-family: var(--font-title);
+            font-size: 1.4rem;
+        }
+
+        .update {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        } 
+        
+        .update .status,
+        .update .update-time {
+            font-weight: 600;
+            padding: 0 .5em;
+        }
+
+        .carrier-info {
+            display: flex;
+            align-self: stretch;
+            justify-content: space-between;
+        }
+
+        @media screen and (min-width: 768px) and (orientation: landscape) {
+            :host {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .carrier-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .update {
+                width: 20rem;
+            }
+        }
+
+
+    </style>
+    <span class="date">FECHA</span>
+    <span class="number">GUIA</span>
+    <div class="update">
+        <span>Status:<span class="status">Ultima vez</span></span>
+        <div>
+            <span class="update-date">Día</span><span class="update-time">Hora</span>
+        </div>
+    </div>
+    <div class="carrier-info">
+        <span class="carrier">Paqueteria</span>
+        <span class="details">Detalles</span>
+    </div>
+</template>

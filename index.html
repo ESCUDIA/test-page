@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SUPLEMENTOS MX</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="/img/SMX.png">
+        </div>
+        <nav>
+            <button class="btn" id="log-btn">
+                <i class="fas fa-lock"></i>
+                <span>Login</span>
+            </button>
+        </nav>
+    </header>
+
+    
+    <div class="page login">
+        <section class="main-section"></section>
+    </div>
+
+    <template id="order-page">
+        <div class="page order">
+            <section class="main-section">
+                <div class="header"></div>
+                <div class="search">
+                    <input class="search-bar raised" type="text">
+                    <div class="selected">
+                        <span>VER SELECCIÓN</span>
+                        <input class="checkbox" type="checkbox">
+                    </div>
+                </div>
+                <div class="product-table"></div>
+            </section>
+        </div>
+    </template>
+
+    <template id="tracking-page">
+        <div class="page tracking">
+            <section class="main-section">
+                <div class="header"></div>
+                <div class="tracking-table"></div>
+                <div class="spinner-wrapper">
+                    <div class="spinner"></div>
+                </div>
+            </section>
+        </div>
+    </template>
+
+    <template id="shopify-page">
+        <div class="page shopify">
+            <section class="main-section">
+                <div class="header"></div>
+                <input class= "file" type="file" accept="image/*">
+                <button class="upload">Upload</button>
+            </section>
+        </div>
+    </template>
+
+    <template id="shipping-page">
+        <div class="page shipping">
+            <section class="main-section">
+                <div class="header"></div>
+            </section>
+        </div>
+    </template>
+
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase-functions.js"></script>
+    <script type="module" src="/js/main.js?v=SMXV2.0"></script>
+</body>
+
+</html>
