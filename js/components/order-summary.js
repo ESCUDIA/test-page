@@ -130,7 +130,7 @@ export default class orderSummary extends HTMLElement {
 
 }
 
-fetch("/html/components/order-summary.html").then((res) => {
+fetch("/test-page/html/components/order-summary.html").then((res) => {
     return res.text();
 }).then((temp) => {
     document.body.insertAdjacentHTML('beforeend', temp);

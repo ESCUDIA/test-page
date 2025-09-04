@@ -30,7 +30,7 @@ export default class loginForm extends HTMLElement {
     }
 }
 
-fetch("/html/components/login-form.html").then((res) => {
+fetch("/test-page/html/components/login-form.html").then((res) => {
     return res.text();
 }).then((temp) => {
     document.body.insertAdjacentHTML('beforeend', temp);
