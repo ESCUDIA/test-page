@@ -1,4 +1,4 @@
-import * as components from "components.js";
+import * as components from "/components.js";
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
