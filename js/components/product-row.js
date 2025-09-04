@@ -135,7 +135,7 @@ export default class productRow extends HTMLElement {
     }
 }
 
-fetch("/test-page/html/components/product-row.html").then((res) => {
+fetch("../../html/components/product-row.html").then((res) => {
     return res.text();
 }).then((temp) => {
     document.body.insertAdjacentHTML('beforeend', temp);

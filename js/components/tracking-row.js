@@ -63,7 +63,7 @@ export default class trackingRow extends HTMLElement {
     }
 }
 
-fetch("/test-page/html/components/tracking-row.html").then((res) => {
+fetch("../../html/components/tracking-row.html").then((res) => {
     return res.text();
 }).then((temp) => {
     document.body.insertAdjacentHTML('beforeend', temp);

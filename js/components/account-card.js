@@ -36,7 +36,7 @@ export default class accountCard extends HTMLElement {
     }
 }
 
-fetch("/test-page/html/components/account-card.html").then((res) => {
+fetch("../../html/components/account-card.html").then((res) => {
     return res.text();
 }).then((temp) => {
     document.body.insertAdjacentHTML('beforeend', temp);

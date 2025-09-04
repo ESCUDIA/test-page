@@ -76,7 +76,7 @@ export default class xlsxParser extends HTMLElement {
     }
 }
 
-fetch("/test-page/html/components/xlsx-parser.html").then((res) => {
+fetch("../../html/components/xlsx-parser.html").then((res) => {
     return res.text();
 }).then((temp) => {
     document.body.insertAdjacentHTML('beforeend', temp);
