@@ -605,7 +605,7 @@ export default class shippingForm extends HTMLElement {
 
 }
 
-fetch("../html/components/shipping-form.html").then((res) => {
+fetch("./html/components/shipping-form.html").then((res) => {
     return res.text();
 }).then((temp) => {
     document.body.insertAdjacentHTML('beforeend', temp);

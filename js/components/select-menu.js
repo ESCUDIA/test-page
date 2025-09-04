@@ -48,7 +48,7 @@ export default class selectMenu extends HTMLElement {
     }
 }
 
-fetch("../html/components/select-menu.html").then((res) => {
+fetch("./html/components/select-menu.html").then((res) => {
     return res.text();
 }).then((temp) => {
     document.body.insertAdjacentHTML('beforeend', temp);
